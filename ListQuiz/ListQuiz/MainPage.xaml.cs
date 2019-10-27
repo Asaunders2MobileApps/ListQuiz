@@ -21,29 +21,52 @@ namespace ListQuiz
         public void OnMore(object sender, EventArgs e)
         {
             var mi = ((MenuItem)sender);
-            if (score < 5)
+            
+            if (score <= 4)
             {
                 score++;
-                DisplayAlert("Assassin Action", mi.CommandParameter + "your assassin score increased to " + score, "OK");
+                if (score <= 3)
+                {
+                    DisplayAlert("Assassin Action", mi.CommandParameter + "your score increased to " + score + " you are Leonardo Da Vinci", "OK");
+                }
+                else if (score == 4)
+                {
+                    DisplayAlert("Assassin Action", mi.CommandParameter + "your assassin score increased to " + score + " you are Desmond", "OK");
+                }
+                else
+                {
+                    DisplayAlert("Assassin Action", mi.CommandParameter + "your assassin score is max you are Ezio", "OK");
+                }
             }
             else
             {
-                score++;
-                DisplayAlert("Assassin Action", mi.CommandParameter + "your assassin score is max", "OK");
+                DisplayAlert("Assassin Action", mi.CommandParameter + "your assassin score is max you are Ezio", "OK");
             }
         }
 
         public void OnDelete(object sender, EventArgs e)
         {
             var mi = ((MenuItem)sender);
-            if (score != 0)
+            if (score >= 1)
             {
                 score--;
-                DisplayAlert("Templar Action", mi.CommandParameter + "your templar score decreased to " + score, "OK");
+                if (score <= 3)
+                {
+                    DisplayAlert("Templar Action", mi.CommandParameter + "your score decreased to " + score + " you are Leonardo Da Vinci", "OK");
+                }
+                else if (score == 4)
+                {
+                    score--;
+                    DisplayAlert("Templar Action", mi.CommandParameter + "your templar score increased to " + score + " you are a Templar Knight", "OK");
+                }
+                else
+                {
+                    DisplayAlert("Templar Action", mi.CommandParameter + "your templar score is max you are Vivere", "OK");
+                }
             }
             else
             {
-                DisplayAlert("Templar Action", mi.CommandParameter + "your templar score is max", "OK");
+                DisplayAlert("Templar Action", mi.CommandParameter + "your templar score is max you are Vivere", "OK");
             }
         }
     }
